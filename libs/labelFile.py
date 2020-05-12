@@ -12,6 +12,7 @@ from libs.yolo_io import YOLOWriter
 from libs.pascal_voc_io import XML_EXT
 import os.path
 import sys
+import math
 
 
 class LabelFileError(Exception):
@@ -143,4 +144,4 @@ class LabelFile(object):
         if ymin < 1:
             ymin = 1
 
-        return (int(xmin), int(ymin), int(xmax), int(ymax))
+        return math.floor(xmin), math.floor(ymin), math.ceil(xmax), math.ceil(ymax)
